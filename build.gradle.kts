@@ -3,6 +3,7 @@ val kotlin_version: String by project
 val logback_version: String by project
 val kmongo_version: String by project
 val commons_codec_version: String by project
+val kmongoDb_version: String by project
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
@@ -36,8 +37,8 @@ dependencies {
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
 
-    implementation("org.litote.kmongo:kmongo:$kmongo_version")
-    implementation("org.litote.kmongo:kmongo-coroutine:$kmongo_version")
+    implementation("org.mongodb:mongodb-driver-kotlin-coroutine:$kmongoDb_version")
+    implementation("org.mongodb:bson-kotlinx:$kmongoDb_version")
 
     implementation("commons-codec:commons-codec:$commons_codec_version")
 }
