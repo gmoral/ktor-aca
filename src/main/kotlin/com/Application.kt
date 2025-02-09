@@ -1,5 +1,9 @@
-package com.gm
+package com.gm.com.aca.plugins
 
+import com.aca.plugins.configureMonitoring
+import com.aca.plugins.configureRouting
+import com.aca.plugins.configureSecurity
+import com.aca.plugins.configureSerialization
 import com.mongodb.kotlin.client.coroutine.MongoClient
 import io.ktor.server.application.*
 
