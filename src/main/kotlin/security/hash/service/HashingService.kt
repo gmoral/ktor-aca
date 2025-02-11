@@ -1,13 +1,13 @@
 package security.hash.service
 
-import security.hash.model.Hash
+import security.hash.model.HashAndSalt
 
 interface HashingService {
 
     fun generateHash(
         password: String,
         saltLenght: Int = 23
-    ): Hash
+    ): HashAndSalt
 
     fun verifyHash(
         password: String,

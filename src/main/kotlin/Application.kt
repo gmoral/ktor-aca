@@ -6,6 +6,9 @@ import data.model.dataSource.MongoUserDataSource
 import io.ktor.server.application.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import security.hash.service.SHA256HashService
+import security.jwt.model.TokenConfig
+import security.jwt.service.JWTTokenService
 
 fun main(args: Array<String>) {
     io.ktor.server.netty.EngineMain.main(args)
@@ -22,27 +25,37 @@ fun Application.module() {
 
     val userDataSource = MongoUserDataSource(database)
 
-    GlobalScope.launch {
+//    GlobalScope.launch {
+//
+//        val dummyMediaList = ArrayList<String>()
+//        dummyMediaList.add("1")
+//        dummyMediaList.add("2")
+//        dummyMediaList.add("3")
+//
+//        val user = User(
+//            name = "test name",
+//            email = "test@gmail.com",
+//            hash = "test hash",
+//            salt = "test salt",
+//            mediaList = dummyMediaList
+//        )
+//
+//        userDataSource.insertUser(user)
+//
+//    }
 
-        val dummyMediaList = ArrayList<String>()
-        dummyMediaList.add("1")
-        dummyMediaList.add("2")
-        dummyMediaList.add("3")
+    val tokenService = JWTTokenService()
+    val tokenConfig = TokenConfig(
+        issuer = environment.config.property("jwt.issuer").toString(),
+        audience = environment.config.property("jwt.audience").toString(),
+        expireDate = 30L * 1000L * 60L * 60L * 24L,
+        secret = "Pepe"
+    )
 
-        val user = User(
-            name = "test name",
-            email = "test@gmail.com",
-            hash = "test hash",
-            salt = "test salt",
-            mediaList = dummyMediaList
-        )
+    val hashingService = SHA256HashService()
 
-        userDataSource.insertUser(user)
-
-    }
-
+    configureSecurity(tokenConfig)
     configureMonitoring()
     configureSerialization()
-    configureSecurity()
-    configureRouting()
+    configureRouting(hashingService, userDataSource, tokenService, tokenConfig)
 }
