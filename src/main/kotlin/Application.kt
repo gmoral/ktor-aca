@@ -1,5 +1,6 @@
 package com.gm
 
+import com.gm.data.media.dataSource.MongoMediaDataSource
 import com.mongodb.kotlin.client.coroutine.MongoClient
 import com.gm.data.user.dataSource.MongoUserDataSource
 import com.gm.plugins.configureMonitoring
@@ -19,11 +20,13 @@ fun Application.module() {
 
     val mongoPassword = "aca-password"
     val databaseName = "aca-database"
+
     val connectionString = "mongodb+srv://aca-user:$mongoPassword@cluster-aca.jykim.mongodb.net/$databaseName?retryWrites=true&w=majority&appName=Cluster-aca"
 
     val mongoClient = MongoClient.create(connectionString)
     val database = mongoClient.getDatabase(databaseName)
 
+    val mediaDataSource = MongoMediaDataSource(database)
     val userDataSource = MongoUserDataSource(database)
 
 //    GlobalScope.launch {
@@ -58,5 +61,11 @@ fun Application.module() {
     configureSecurity(tokenConfig)
     configureMonitoring()
     configureSerialization()
-    configureRouting(hashingService, userDataSource, tokenService, tokenConfig)
+    configureRouting(
+        mediaDataSource,
+        hashingService,
+        userDataSource,
+        tokenService,
+        tokenConfig
+    )
 }
