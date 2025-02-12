@@ -1,4 +1,4 @@
-package data.model
+package com.gm.data.user.model
 
 import com.gm.data.media.model.Media
 import org.bson.codecs.pojo.annotations.BsonId

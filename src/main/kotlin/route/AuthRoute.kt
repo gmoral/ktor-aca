@@ -1,12 +1,11 @@
 package com.gm.route
 
-import com.gm.data.auth.AuthRequest
-import com.gm.data.auth.AuthRespond
-import data.model.User
-import data.model.dataSource.UserDataSource
+import com.gm.data.auth.request.AuthRequest
+import com.gm.data.auth.respond.AuthRespond
+import com.gm.data.user.model.User
+import com.gm.data.user.dataSource.UserDataSource
 import security.hash.service.HashingService
 import io.ktor.http.*
-import io.ktor.server.application.*
 import io.ktor.server.auth.authenticate
 import io.ktor.server.request.*
 import io.ktor.server.response.*

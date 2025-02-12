@@ -1,11 +1,12 @@
 package com.gm
 
 import com.mongodb.kotlin.client.coroutine.MongoClient
-import data.model.User
-import data.model.dataSource.MongoUserDataSource
+import com.gm.data.user.dataSource.MongoUserDataSource
+import com.gm.plugins.configureMonitoring
+import com.gm.plugins.configureRouting
+import com.gm.plugins.configureSecurity
+import com.gm.plugins.configureSerialization
 import io.ktor.server.application.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import security.hash.service.SHA256HashService
 import security.jwt.model.TokenConfig
 import security.jwt.service.JWTTokenService

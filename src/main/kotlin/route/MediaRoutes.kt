@@ -4,9 +4,8 @@ import com.gm.data.media.dataSource.MediaDataSource
 import com.gm.data.media.mappers.*
 import com.gm.data.media.model.requests.MediaByIdRequest
 import com.gm.data.media.model.requests.UpsertMediaRequest
-import data.model.dataSource.UserDataSource
+import com.gm.data.user.dataSource.UserDataSource
 import io.ktor.http.*
-import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*

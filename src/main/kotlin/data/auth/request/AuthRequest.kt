@@ -1,4 +1,4 @@
-package com.gm.data.auth
+package com.gm.data.auth.request
 
 import kotlinx.serialization.Serializable
 

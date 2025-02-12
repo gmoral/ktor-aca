@@ -1,10 +1,10 @@
-package data.model.dataSource
+package com.gm.data.user.dataSource
 
 
 import com.mongodb.client.model.Filters.eq
 import com.mongodb.client.model.ReplaceOptions
 import com.mongodb.kotlin.client.coroutine.MongoDatabase
-import data.model.User
+import com.gm.data.user.model.User
 import kotlinx.coroutines.flow.firstOrNull
 
 class MongoUserDataSource(

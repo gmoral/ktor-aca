@@ -1,6 +1,6 @@
-package data.model.dataSource
+package com.gm.data.user.dataSource
 
-import data.model.User
+import com.gm.data.user.model.User
 
 interface UserDataSource {
     suspend fun getUserByEmail(email: String): User?

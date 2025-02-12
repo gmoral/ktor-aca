@@ -1,7 +1,7 @@
 package com.gm.data.media.dataSource
 import com.gm.data.media.model.Media
 import com.mongodb.kotlin.client.coroutine.MongoDatabase
-import data.model.User
+import com.gm.data.user.model.User
 import com.mongodb.client.model.Filters.eq
 import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
